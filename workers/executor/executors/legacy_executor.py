@@ -21,7 +21,6 @@ from executor.executors.dto import (
 )
 from executor.executors.exceptions import ExtractionError, LegacyExecutorError
 from executor.executors.file_utils import FileUtils
-
 from unstract.sdk1.adapters.exceptions import AdapterError
 from unstract.sdk1.adapters.x2text.constants import X2TextConstants
 from unstract.sdk1.adapters.x2text.llm_whisperer.src import LLMWhisperer
@@ -338,7 +337,6 @@ class LegacyExecutor(BaseExecutor):
         Wrapped in a method so tests can mock it cleanly.
         """
         from executor.executors.index import Index
-
         from unstract.sdk1.embedding import EmbeddingCompat
         from unstract.sdk1.vector_db import VectorDB
 
@@ -444,7 +442,7 @@ class LegacyExecutor(BaseExecutor):
         pre_extracted_text = index_params.get(IKeys.EXTRACTED_TEXT, "") or ""
         if pre_extracted_text:
             logger.info(
-                "ide_index: marker hit, skipping extract step " "(len=%d, run_id=%s)",
+                "ide_index: marker hit, skipping extract step (len=%d, run_id=%s)",
                 len(pre_extracted_text),
                 context.run_id,
             )
@@ -1078,8 +1076,7 @@ class LegacyExecutor(BaseExecutor):
                     "Document already indexed in vector store; skipping re-index."
                 )
                 logger.info(
-                    "Skipping re-index: doc_id=%s already in vector DB and "
-                    "reindex=False",
+                    "Skipping re-index: doc_id=%s already in vector DB and reindex=False",
                     doc_id,
                 )
                 return ExecutionResult(success=True, data={IKeys.DOC_ID: doc_id})
@@ -1129,7 +1126,6 @@ class LegacyExecutor(BaseExecutor):
         from executor.executors.variable_replacement import (
             VariableReplacementService,
         )
-
         from unstract.sdk1.embedding import EmbeddingCompat
         from unstract.sdk1.llm import LLM
         from unstract.sdk1.vector_db import VectorDB
@@ -1475,7 +1471,6 @@ class LegacyExecutor(BaseExecutor):
         """Execute one prompt: variable replacement, retrieval, LLM, post-process."""
         from executor.executors.constants import PromptServiceConstants as PSKeys
         from executor.executors.constants import RetrievalStrategy
-
         from unstract.sdk1.utils.indexing import IndexingUtils
 
         (

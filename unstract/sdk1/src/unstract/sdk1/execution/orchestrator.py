@@ -37,8 +37,7 @@ class ExecutionOrchestrator:
             exceptions (wrapped as a failure result).
         """
         logger.info(
-            "Orchestrating execution: executor=%s operation=%s "
-            "run_id=%s request_id=%s",
+            "Orchestrating execution: executor=%s operation=%s run_id=%s request_id=%s",
             context.executor_name,
             context.operation,
             context.run_id,
